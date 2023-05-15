@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios 3 e 4 de Javascript</title>
+</head>
+<body>
+    <script>
+       async function a(){
+            b();
+            await c();
+            await d();
+            alertUser("a")
+       }
+
+       a();
+       
+       function b(){
+            return;
+            alertUser('b');
+       }
+
+       function c(){
+            return new Promise((resolve) => {
+                resolve();
+                alertUser('c');
+            });
+       }
+
+       function d(){
+            return new Promise((resolve) => {
+                alertUser('d');
+            })
+       }
+
+       function alertUser(message){
+            console.log('A função é: '+message);
+       }
+
+       document.write('<h2>Resolução exercício 3:</h2>');
+       document.write('<p>Primeiro a <b>função c</b> é exibida e então a <b>função d</b> é exibida após ela.</p>');
+
+       document.write('<br/>');
+
+       document.write('<h2>Resolução exercício 4:</h2>');
+       document.write(`
+       <p>
+        Sim, são eles:
+            <ul>
+                <li>A <b>função b</b> possui um return antes de chamar a função alertUser, <b>nunca exibindo a mensagem '<i>A função é b</i>'</b>.</li><br/>
+                <li>Na <b>função c</b>, o return é chamado antes da função alertUser ser invocada, <b>exibindo a mensagem antes da resolução da promise</b>.</li><br/>
+                <li>Na <b>função d</b>, o resolve não é chamado, <b>fazendo com que a promise nunca seja resolvida</b>.</li><br/>
+                <li>Com isso, como a <b>função assíncrona a</b> está em espera pela resolução das <b>promises criadas nas funções c e d</b> e elas, por sua vez, nunca são resolvidas (como abordado nos dois tópicos anteriores a este), a mensagem '<e>A função é a</e>' não é exibida.</li>
+            </ul>
+        </p>
+       `);
+
+       //Abaixo segue como as funções deveriam estar para um pleno funcionamento (exibindo as mensagens na ordem em que são chamadas - b,c,d,a).
+
+        //    async function a(){
+        //         b();
+        //         await c();
+        //         await d();
+        //         alertUser("a")
+        //    }
+
+        //    a();
+        
+        //    function b(){
+        //         alertUser('b');
+        //    }
+
+        //    function c(){
+        //         return new Promise((resolve) => {
+        //             alertUser('c');
+        //             resolve();
+        //         });
+        //    }
+
+        //    function d(){
+        //         return new Promise((resolve) => {
+        //             alertUser('d');
+        //             resolve();
+        //         })
+        //    }
+
+        //    function alertUser(message){
+        //         console.log('A função é: '+message);
+        //    }
+    </script>
+</body>
+</html>

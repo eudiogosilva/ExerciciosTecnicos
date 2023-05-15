@@ -1,0 +1,20 @@
+--a)Pablo é pai de Lucas:
+
+--Inserção do aluno 'Lucas' na tabela Aluno
+INSERT INTO Aluno (id, nome) VALUES (1, 'Lucas');
+
+--Inserção do responsável 'Pablo' na tabela Responsável
+INSERT INTO Responsavel (id, nome) VALUES (1, 'Pablo');
+
+--Inserção do parentesco entre o aluno 'Lucas' e o responsável 'Pablo'
+INSERT INTO Parentesco (idAluno, idResponsavel, parentesco) VALUES (1, 1, 'Pai');
+
+--b)Brenda é mãe de Lucas:
+
+--Considerei que 'Lucas' já está cadastrado na tabela Aluno.
+
+--Inserção da responsável 'Brenda' na tabela Responsável
+INSERT INTO Responsavel (id, nome) VALUES (2, 'Brenda');
+
+--Inserção do parentesco entre o aluno 'Lucas' e a responsável 'Brenda'
+INSERT INTO Parentesco (idAluno, idResponsavel, parentesco) VALUES (1, 2, 'Mãe');

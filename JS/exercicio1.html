@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 1 de Javascript</title>
+</head>
+<body>
+    <script>
+        //Estrutura referente aos exercícios 1 e 2
+        var clientes = [
+            {
+                'id': 1,
+                'nome': 'Luis Santos Silveira',
+                'idade': 18
+            },
+            {
+                'id': 2,
+                'nome': 'Ricardo Lopes Alves',
+                'idade': 30
+            },
+            {
+                'id': 3,
+                'nome': 'Gustavo Silva Junior',
+                'idade': 26
+            }
+        ];
+
+        document.write('<h2>Exercício 1) Listagem do último e primeiro nome:</h2><br/>');
+
+        //objeto é percorrido e então o nome dos clientes é formatado para 'ultimoNome,primeiroNome'
+        clientes.forEach(cliente => {
+            let nomeCliente = (cliente.nome).split(' ');
+            document.write('<b>Último sobrenome:</b> ', nomeCliente.at(-1),', <b>Primeiro nome:</b> ',nomeCliente.at(0));
+            document.write('<br/><br/>');
+        });
+    </script>
+</body>
+</html>

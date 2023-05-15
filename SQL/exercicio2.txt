@@ -1,0 +1,21 @@
+--Busca pelos dois primeiros responsáveis de cada aluno
+
+SELECT a.nome AS nome_aluno,
+       r1.nome AS nome_responsavel1,
+       p1.parentesco AS parentesco1,
+       r2.nome AS nome_responsavel2,
+       p2.parentesco AS parentesco2
+FROM aluno a
+LEFT JOIN parentesco p1 ON p1.idaluno = a.id AND p1.idresponsavel = (
+    SELECT MIN(idresponsavel)
+    FROM parentesco
+    WHERE idaluno = a.id
+)
+LEFT JOIN responsavel r1 ON r1.id = p1.idresponsavel
+LEFT JOIN parentesco p2 ON p2.idaluno = a.id AND p2.idresponsavel = (
+    SELECT MIN(idresponsavel)
+    FROM parentesco
+    WHERE idaluno = a.id AND idresponsavel > p1.idresponsavel
+)
+LEFT JOIN responsavel r2 ON r2.id = p2.idresponsavel
+ORDER BY nome_aluno;

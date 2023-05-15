@@ -1,0 +1,13 @@
+--Exibição do id do aluno, seu nome, seus responsáveis e respectivos parentescos.
+
+SELECT a.id as Id_Aluno,
+	   a.nome AS Aluno,
+       GROUP_CONCAT(r.nome SEPARATOR ', ') AS Responsaveis,
+       GROUP_CONCAT(r.id SEPARATOR ', ') AS Id_Responsaveis,
+       GROUP_CONCAT(p.parentesco SEPARATOR ', ') AS Parentescos
+FROM aluno a
+JOIN parentesco pa ON pa.idaluno = a.id
+JOIN responsavel r ON r.id = pa.idresponsavel
+JOIN parentesco p ON p.idaluno = a.id AND p.idresponsavel = r.id
+GROUP BY a.nome
+ORDER BY a.nome;

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 2 de Javascript</title>
+</head>
+<body>
+    
+    <script>
+        //Estrutura referente ao exercício 2
+        var numero = "5(1)9-876-543-21";
+
+        document.write('<h2>Exercício 2) Formatação do número de telefone para (XX)_X_XXXX-XXXX</h2><br/>');
+        document.write('<b>Número sem formatação:</b> ',numero);
+        document.write('<br/>');
+
+        //remoção de qualquer caracter especial
+        numerosem_ = numero.replace(/[^\d]/g, '');
+        numerocom_ = numero.replace(/[^\d]/g, '');
+
+        //formatação do número para (XX) X XXXX-XXXX
+        numerosem_ = '(' + numerosem_.substr(0, 2) + ') ' + numerosem_.substr(2, 1) + ' ' + numerosem_.substr(3, 4) + '-' + numerosem_.substr(7);
+        document.write('<b>Número formatado sem underline: </b>',numerosem_);
+
+        document.write('<br/>');
+        
+        //formatação do número para (XX)_X_XXXX-XXXX
+        numerocom_ = '(' + numerocom_.substr(0, 2) + ')_' + numerocom_.substr(2, 1) + '_' + numerocom_.substr(3, 4) + '-' + numerocom_.substr(7);
+        document.write('<b>Número formatado com underline: </b>',numerocom_);
+
+        
+        
+    </script>
+</body>
+</html>
